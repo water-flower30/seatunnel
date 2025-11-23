@@ -15,29 +15,21 @@
  * limitations under the License.
  */
 
-package org.apache.seatunnel.connectors.seatunnel.file.config;
+package org.apache.seatunnel.connectors.seatunnel.file.abfs.source;
 
-import java.io.Serializable;
+import org.apache.seatunnel.api.configuration.ReadonlyConfig;
+import org.apache.seatunnel.connectors.seatunnel.file.abfs.source.config.MultipleTableAbfsFileSourceConfig;
+import org.apache.seatunnel.connectors.seatunnel.file.config.FileSystemType;
+import org.apache.seatunnel.connectors.seatunnel.file.source.BaseMultipleTableFileSource;
 
-public enum FileSystemType implements Serializable {
-    HDFS("HdfsFile"),
-    LOCAL("LocalFile"),
-    OSS("OssFile"),
-    OSS_JINDO("OssJindoFile"),
-    COS("CosFile"),
-    FTP("FtpFile"),
-    SFTP("SftpFile"),
-    S3("S3File"),
-    OBS("ObsFile"),
-    ABFS("AbfsFile");
+public class AbfsFileSource extends BaseMultipleTableFileSource {
 
-    private final String fileSystemPluginName;
-
-    FileSystemType(String fileSystemPluginName) {
-        this.fileSystemPluginName = fileSystemPluginName;
+    public AbfsFileSource(ReadonlyConfig readonlyConfig) {
+        super(new MultipleTableAbfsFileSourceConfig(readonlyConfig));
     }
 
-    public String getFileSystemPluginName() {
-        return fileSystemPluginName;
+    @Override
+    public String getPluginName() {
+        return FileSystemType.ABFS.getFileSystemPluginName();
     }
 }
