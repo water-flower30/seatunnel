@@ -15,29 +15,6 @@
  * limitations under the License.
  */
 
-package org.apache.seatunnel.connectors.seatunnel.file.config;
+package org.apache.seatunnel.connectors.seatunnel.file.gcs.config;
 
-import java.io.Serializable;
-
-public enum FileSystemType implements Serializable {
-    HDFS("HdfsFile"),
-    LOCAL("LocalFile"),
-    OSS("OssFile"),
-    OSS_JINDO("OssJindoFile"),
-    COS("CosFile"),
-    FTP("FtpFile"),
-    SFTP("SftpFile"),
-    S3("S3File"),
-    OBS("ObsFile"),
-    GCS("GcsFile");
-
-    private final String fileSystemPluginName;
-
-    FileSystemType(String fileSystemPluginName) {
-        this.fileSystemPluginName = fileSystemPluginName;
-    }
-
-    public String getFileSystemPluginName() {
-        return fileSystemPluginName;
-    }
-}
+public class GoogleCloudStorageFileSourceOptions extends GoogleCloudStorageBaseOptions {}
